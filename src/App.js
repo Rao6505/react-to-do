@@ -25,8 +25,7 @@ class App extends Component {
      );
    }
  }
-          )}
-        </ul>   
+         </ul>   
       </div>
     );
   }
