@@ -31,14 +31,13 @@ class App extends Component {
    
    }
     
-  toggleComplete(index);{
+  toggleComplete(index) {
     const todos = this.state.todos.slice();
     const todo = todos[index];
     todo.isCompleted = todo.isCompleted ? false : true;
-    this.setState({todos: todos});
+    this.setState({ todos: todos });
   }
-  
-   render();{
+   render() {
     return (
       <div className="App">
 	    <ul>
@@ -54,6 +53,5 @@ class App extends Component {
      );
    }
  }
-
 
 export default App;
