@@ -7,16 +7,21 @@ class App extends Component {
      super(props);
 	  this.state = {
        todos: [
-         { description: 'Walk the cat', isCompleted: true },
-         { description: 'Throw the dishes away', isCompleted: false },
-         { description: 'Buy new dishes', isCompleted: false }
+         { id: 1, description: 'Walk the cat', isCompleted: true },
+         { id: 2, description: 'Throw the dishes away', isCompleted: false },
+         { id: 3, description: 'Buy new dishes', isCompleted: false }
        ],
        newTodoDescription: ''
      };
    }
-   deleteToDo(e) {
-    this.setState({})
-}   
+   
+   
+   deleteTodo(id) {
+    this.setState((prevState) => ({
+      items: prevState.items.filter(item => item.id !== id),
+    }))
+  }
+
 
     handleChange(e) {
       this.setState({ newTodoDescription: e.target.value })
