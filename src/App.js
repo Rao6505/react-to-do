@@ -3,9 +3,9 @@ import './App.css';
 import ToDo from './components/ToDo.js';
 
 
-class App extends React.Component {
-       constructor(props) {
-     super(props);
+class App extends Component {
+    constructor(props) {
+      super(props);
       this.state = {
        todos: [
          { description: 'Walk the cat', isCompleted: true },
@@ -14,7 +14,6 @@ class App extends React.Component {
        ],
        newTodoDescription: ''
 			};
-      this.deleteToDo = this.deleteToDo.bind(this)
     }
 
     deleteToDo(index) {
@@ -47,7 +46,7 @@ class App extends React.Component {
       <div className="App">
         <ul>
           { this.state.todos.map( (todo, index) => 
-             <ToDo key={ index } index={index} description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ this.toggleComplete } deleteToDo={this.deleteToDo } />
+             <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={() => this.toggleComplete(index) } deleteToDo={() => this.deleteToDo(index) } />
            )}
          </ul>
          <form onSubmit={ (e) => this.handleSubmit(e) }>
@@ -55,18 +54,6 @@ class App extends React.Component {
            <input type="submit" />
          </form>
        </div>
-     );
-   }
- }
-
-class ToDo extends React.Component {
-       render() {
-      return (
-         <li>
-             <button type="button" onClick={() => this.props.deleteToDo(this.props.index)} > delete </button>
-         <input type="checkbox" checked={ this.props.isCompleted } onChange={ this.props.toggleComplete } />
-         <span>{ this.props.description }</span>
-       </li>
      );
    }
  }
